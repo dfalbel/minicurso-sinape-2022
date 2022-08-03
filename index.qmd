@@ -1,0 +1,7 @@
+---
+title: "SINAPE"
+---
+
+Site com conteúdos do curso de Deep Learning ministrado no SINAPE 2022.
+
+

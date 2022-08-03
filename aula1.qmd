@@ -1,0 +1,49 @@
+---
+title: "Aula 1"
+---
+
+## Slides
+
+![](./slides/Dia 01.pdf){width="100%" height="500px"}
+
+## Exemplo 1
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+knitr::spin_child("01-mlp.R")
+knitr::opts_chunk$set(eval = TRUE)
+```
+
+## Exemplo 2
+
+### Arquivo p/ rodar
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+knitr::spin_child("02-tune.R")
+knitr::opts_chunk$set(eval = TRUE)
+```
+
+### Arquivo espec
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+knitr::spin_child("tune.R")
+knitr::opts_chunk$set(eval = TRUE)
+```
+
+## Exemplo 3
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+knitr::spin_child("03-cnn.R")
+knitr::opts_chunk$set(eval = TRUE)
+```
+
+## Exemplo 4
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+knitr::spin_child("04-segmentation.R")
+knitr::opts_chunk$set(eval = TRUE)
+```

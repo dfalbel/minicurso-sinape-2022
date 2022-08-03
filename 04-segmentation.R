@@ -128,3 +128,23 @@ model %>%
     train_dataset,
     validation_data = valid_dataset
   )
+
+batch <- coro::collect(valid_dataset, 1)[[1]]
+preds <- predict(model, batch[[1]])
+
+display_mask <- function(pred) {
+  mask <- tf$argmax(pred, axis=-1L) * 127
+  mask[1,,] %>%
+    tf$expand_dims(-1L) %>%
+    tf$image$grayscale_to_rgb() %>%
+    as.array() %>%
+    as.raster(max = 255) %>%
+    plot()
+}
+
+plot(as.raster(as.array(batch[[1]][1,,,]), max = 255))
+display_mask(preds)
+display_target(batch[[2]][1,,,])
+
+
+

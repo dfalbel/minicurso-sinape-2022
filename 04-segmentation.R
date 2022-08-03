@@ -147,4 +147,3 @@ display_mask(preds)
 display_target(batch[[2]][1,,,])
 
 
-

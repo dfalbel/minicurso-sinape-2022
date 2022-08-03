@@ -34,6 +34,9 @@ knitr::opts_chunk$set(eval = TRUE)
 
 ## Exemplo 3
 
+Baixar os dados [daqui](https://www.robots.ox.ac.uk/~vgg/data/pets/) 
+
+
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(eval = FALSE)
 knitr::spin_child("03-cnn.R")

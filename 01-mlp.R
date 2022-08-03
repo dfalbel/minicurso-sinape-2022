@@ -1,4 +1,6 @@
 
+# Dados daqui: https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+(diagnostic)
+
 # Ler dados
 
 col_names <- janitor::make_clean_names(c("Clump Thickness",

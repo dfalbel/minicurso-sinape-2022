@@ -633,7 +633,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(</span>
 <span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a>    train_dataset,</span>
 <span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a>    <span class="at">validation_data =</span> valid_dataset</span>
-<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a>batch <span class="ot">&lt;-</span> coro<span class="sc">::</span><span class="fu">collect</span>(valid_dataset, <span class="dv">1</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a>preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, batch[[<span class="dv">1</span>]])</span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a>display_mask <span class="ot">&lt;-</span> <span class="cf">function</span>(pred) {</span>
+<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a>  mask <span class="ot">&lt;-</span> tf<span class="sc">$</span><span class="fu">argmax</span>(pred, <span class="at">axis=</span><span class="sc">-</span>1L) <span class="sc">*</span> <span class="dv">127</span></span>
+<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a>  mask[<span class="dv">1</span>,,] <span class="sc">%&gt;%</span></span>
+<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a>    tf<span class="sc">$</span><span class="fu">expand_dims</span>(<span class="sc">-</span>1L) <span class="sc">%&gt;%</span></span>
+<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a>    tf<span class="sc">$</span>image<span class="sc">$</span><span class="fu">grayscale_to_rgb</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.array</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.raster</span>(<span class="at">max =</span> <span class="dv">255</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>()</span>
+<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.raster</span>(<span class="fu">as.array</span>(batch[[<span class="dv">1</span>]][<span class="dv">1</span>,,,]), <span class="at">max =</span> <span class="dv">255</span>))</span>
+<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a><span class="fu">display_mask</span>(preds)</span>
+<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a><span class="fu">display_target</span>(batch[[<span class="dv">2</span>]][<span class="dv">1</span>,,,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>

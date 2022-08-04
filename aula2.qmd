@@ -1,0 +1,24 @@
+---
+title: "Aula 2"
+---
+
+## Slides
+
+![](./slides/Day 02.pdf){width="100%" height="500px"}
+
+## Exemplo 1
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+knitr::spin_child("05-dcgan.R")
+knitr::opts_chunk$set(eval = TRUE)
+```
+
+## Exemplo 2
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+knitr::spin_child("06-acgan.R")
+knitr::opts_chunk$set(eval = TRUE)
+```
+

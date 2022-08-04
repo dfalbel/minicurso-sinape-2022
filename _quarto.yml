@@ -11,6 +11,7 @@ website:
   sidebar:
     contents:
       - href: aula1.qmd
+      - href: aula2.qmd
 
 format:
   html:
